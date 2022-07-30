@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.vs-input {
+	width: 100% !important;
+}
+
