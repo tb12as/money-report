@@ -1,4 +1,5 @@
-# money
+# Money Report Project
+Tools sederhana untuk menghitung perbedaan tabungan diawal dan akhir bulan. 
 
 ## Project setup
 ```
