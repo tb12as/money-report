@@ -16,6 +16,14 @@ export default {
   },
 
   beforeCreate() {
+    this.axios.get('api/get-user')
+      .then(res => {
+        this.$router.push({name: 'home'})
+      })
+      .catch(err => {
+        this.$router.push({name: 'login'})
+      });
+
     this.axios.interceptors.request.use((req) => {
       this.loading = this.$vs.loading({
         type: "square",

@@ -38,7 +38,9 @@ export default {
   methods: {
     login() {
       this.axios.post("api/login", this.form).then((res) => {
-        // console.log(res.data);
+        localStorage.setItem('token', res.data.data.api_token)
+
+        this.$router.push({name: 'home'});
       });
     },
   },

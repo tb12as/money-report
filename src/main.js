@@ -17,7 +17,22 @@ Vue.use(Vuesax, {
 import axios from "axios";
 import VueAxios from "vue-axios";
 
-axios.defaults.baseURL = "http://47.88.57.201:5000/";
+if (
+  process.env.VUE_APP_AXIOS_BASE_URL &&
+  process.env.VUE_APP_PRODUCTION == "false"
+) {
+  axios.defaults.baseURL = process.env.VUE_APP_AXIOS_BASE_URL;
+}
+
+if (process.env.VUE_APP_PRODUCTION == "true") {
+  // console.log(process.env.VUE_APP_PRODUCTION)
+  axios.defaults.baseURL = "http://47.88.57.201:5000/";
+}
+
+const token = localStorage.token;
+if (token != undefined && token != "") {
+  axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
+}
 
 Vue.use(VueAxios, axios);
 
